@@ -8,12 +8,13 @@
 <style>
 :root{--blue:#1EBFE1;--blue-press:#17A6C4;--blue-deep:#0E8DA8;--ink:#1E1E1E;--white:#FFFFFF;--bone:#E2DFD2;--gray-a:#DADADA;--gray-b:#B2B2B2;--red:#DE5358;--green:#AFE11E;--ink-12:rgba(30,30,30,.12);--ink-60:rgba(30,30,30,.6);--track-label:.18em;--font-display:'Archivo Narrow','Helvetica Neue',Arial,sans-serif;--font-body:'Helvetica Neue',Helvetica,Arial,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-body);font-weight:300;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+html{height:100%}
+body{font-family:var(--font-body);font-weight:300;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100%;display:flex;flex-direction:column}
 h1,h2,h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;line-height:1.02}
 a{color:var(--blue-deep);text-decoration:none}a:hover{color:var(--blue);text-decoration:underline}
 .eyebrow{font-family:var(--font-display);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:var(--track-label)}
 header{background:var(--ink);color:var(--white);padding:28px 32px 24px}
-.header-inner{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;max-width:1200px;margin:0 auto}
+.header-inner{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px}
 .brand{display:flex;align-items:center;gap:16px;cursor:pointer}
 .brand-logo{width:52px;height:52px;flex-shrink:0;display:block}
 .brand h1{font-size:34px;letter-spacing:.01em;color:var(--white)}
@@ -35,7 +36,7 @@ nav::-webkit-scrollbar{display:none}
 .tab-btn{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:var(--track-label);text-transform:uppercase;background:none;border:none;padding:17px 20px 15px;cursor:pointer;color:var(--gray-b);position:relative;white-space:nowrap;transition:color .14s}
 .tab-btn:hover,.tab-btn.active{color:var(--ink)}
 .tab-btn.active::after{content:"";position:absolute;left:20px;right:20px;bottom:-2px;height:4px;background:var(--blue)}
-main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;min-height:50vh}
+main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:100%}
 .panel{display:none}.panel.active{display:block;animation:fade .18s cubic-bezier(.2,0,.2,1)}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .section-head{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
@@ -43,13 +44,13 @@ main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;min-height:50vh}
 .section-head .idx{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);color:var(--blue-deep);display:block;margin-bottom:8px}
 .section-head .sub{font-size:14px;color:var(--ink-60);margin-top:8px;max-width:60ch}
 .day-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.day-btn{display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:118px;text-align:left;background:var(--white);border:1px solid var(--ink);padding:16px 17px;cursor:pointer;font-family:inherit;transition:background .14s cubic-bezier(.2,0,.2,1),color .14s}
+.day-btn{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:16px;min-height:118px;text-align:left;background:var(--gray-a);border:1px solid var(--ink);padding:16px 17px;cursor:pointer;font-family:inherit;transition:background .14s cubic-bezier(.2,0,.2,1),color .14s}
 .day-btn:hover{background:var(--ink);color:var(--white)}
 .day-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.db-date{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
-.db-who{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--blue-deep)}
+.db-date{font-family:var(--font-display);font-weight:700;font-size:24.225px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
+.db-who{font-family:var(--font-display);font-weight:700;font-size:16.5px;letter-spacing:.153em;text-transform:uppercase;color:var(--blue-deep)}
 .day-btn:hover .db-who{color:var(--blue)}
-.db-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:var(--font-display);font-weight:700;font-size:10px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--gray-b)}
+.db-meta{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-family:var(--font-display);font-weight:700;font-size:10px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--gray-b)}
 .day-btn:hover .db-meta{color:rgba(255,255,255,.6)}
 .db-go{color:var(--blue)}
 .day-btn.add{border-style:dashed;border-color:var(--gray-b);color:var(--ink-60);justify-content:center}
@@ -99,6 +100,17 @@ main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;min-height:50vh}
 .info-card{background:var(--white);border:1px solid var(--ink-12);padding:22px}
 .info-card.full{grid-column:1/-1}
 .info-card h3{font-size:15px;letter-spacing:.06em;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--blue);display:inline-block;outline:none}
+details.info-card{padding:0;background:var(--white)}
+details.info-card>summary{list-style:none;cursor:pointer;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;outline:none;background:var(--gray-a)}
+details.info-card>summary::-webkit-details-marker{display:none}
+details.info-card>summary>h3{margin-bottom:0;padding-bottom:0;border-bottom:none;font-size:18.75px}
+.accordion-arrow{font-family:var(--font-display);font-size:20px;line-height:1;color:var(--blue-deep);flex-shrink:0}
+.accordion-arrow::after{content:'+'}
+details[open]>summary .accordion-arrow::after{content:'\2212'}
+.accordion-body{padding:18px 22px 22px}
+.accordion-body h4{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);margin:16px 0 6px}
+.accordion-body h4:first-child{margin-top:0}
+.accordion-body .rich ul,.accordion-body .rich ol{margin-left:40px}
 .card-tools{display:flex;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid var(--ink-12)}
 .video-wrap{border:1px solid var(--ink-12);padding:22px;max-width:900px}
 .video-frame{position:relative;padding-top:56.25%;background:var(--ink);overflow:hidden;display:block}
@@ -119,9 +131,9 @@ main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;min-height:50vh}
 .field:focus{outline:2px solid var(--blue);outline-offset:1px}
 .field-label{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;display:block;margin-bottom:6px}
 .field-hint{font-size:12px;color:var(--ink-60);margin:-6px 0 14px}
-footer{background:var(--ink)}
+footer{background:var(--ink);flex-shrink:0}
 .square-strip{height:12px;background:linear-gradient(to right,#1EBFE1 0% 20%,#17A6C4 20% 40%,#0E8DA8 40% 60%,#B2B2B2 60% 80%,#DADADA 80% 100%)}
-.footer-inner{height:48px;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:1200px;margin:0 auto}
+.footer-inner{height:48px;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .footer-inner button{font-family:var(--font-display);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:var(--track-label);background:none;border:none;cursor:pointer;color:var(--ink);transition:color .14s}
 .footer-logo{height:24px;width:auto;display:block}
 .footer-inner button:hover{color:var(--gray-b)}
@@ -158,8 +170,8 @@ main{padding:24px 18px 56px}.section-head h2{font-size:21px}
 <nav>
 <div class="nav-inner">
 <button class="tab-btn active" data-tab="home">Home</button>
-<button class="tab-btn" data-tab="content">Communicator Content</button>
-<button class="tab-btn" data-tab="guide">Communicator Guide</button>
+<button class="tab-btn" data-tab="content">Content</button>
+<button class="tab-btn" data-tab="guide">Guide</button>
 <button class="tab-btn" data-tab="video">Room Setup Video</button>
 </div>
 </nav>
@@ -231,10 +243,25 @@ function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show'
 function b64encode(str){return btoa(new Uint8Array(new TextEncoder().encode(str)).reduce((a,b)=>a+String.fromCharCode(b),''))}
 function b64decode(b64){return new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g,'')),c=>c.charCodeAt(0)))}
 function qs(k){return new URLSearchParams(location.search).get(k)}
+const OFFICE_EXTS=['doc','docx','ppt','pptx','xls','xlsx'];
+function fileExt(name){const m=/\.([a-z0-9]+)$/i.exec(name||'');return m?m[1].toLowerCase():''}
+function openHref(f){
+  if(f.kind!=='file')return f.url;
+  if(OFFICE_EXTS.indexOf(fileExt(f.name))>-1){
+    const abs=new URL(f.url,location.href).href;
+    return 'https://view.officeapps.live.com/op/embed.aspx?src='+encodeURIComponent(abs);
+  }
+  return f.url;
+}
 
 /* ---------- tabs / footer ---------- */
 function selectTab(tab){document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));const b=document.querySelector('.tab-btn[data-tab="'+tab+'"]');if(b)b.classList.add('active');const p=$('#panel-'+tab);if(p)p.classList.add('active')}
-document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.tab)));
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{
+  const tab=b.dataset.tab;
+  selectTab(tab);
+  if(tab==='content'&&openIdx!==null){openIdx=null;renderContent()}
+  else if(tab==='guide'){document.querySelectorAll('#guideGrid details[open]').forEach(d=>d.removeAttribute('open'))}
+}));
 
 /* ---------- load ---------- */
 async function boot(){
@@ -247,7 +274,7 @@ async function boot(){
   renderAll();
   const d=qs('day');if(d!==null&&DATA.days[+d]){selectTab('content');openDay(+d)}
 }
-function normalize(d){d=d||{};return{days:(d.days||[]).map(x=>({date:x.date||'',who:x.who||'',series:x.series||'',graphic:x.graphic||'',body:x.body||'',files:(x.files||[]).map(f=>({name:f.name||'',url:f.url||'',kind:f.kind||'file'}))})),guide:(d.guide||[]).map(g=>({title:g.title||'',html:g.html||'',full:!!g.full})),video:{url:(d.video||{}).url||'',note:(d.video||{}).note||''},updated:d.updated||''}}
+function normalize(d){d=d||{};return{days:(d.days||[]).map(x=>({date:x.date||'',who:x.who||'',series:x.series||'',graphic:x.graphic||'',body:x.body||'',files:(x.files||[]).map(f=>({name:f.name||'',url:f.url||'',kind:f.kind||'file'}))})),guide:(d.guide||[]).map(g=>({title:g.title||'',html:g.html||'',full:!!g.full,collapsible:!!g.collapsible})),video:{url:(d.video||{}).url||'',note:(d.video||{}).note||''},updated:d.updated||''}}
 
 /* ---------- render ---------- */
 function renderAll(){renderHeader();renderContent();renderGuide();renderVideo()}
@@ -265,8 +292,7 @@ function renderContent(){
   const board=document.createElement('div');board.className='day-board';
   DATA.days.forEach((d,i)=>{
     const b=document.createElement('button');b.className='day-btn';b.onclick=()=>openDay(i);
-    const n=d.files.length;
-    b.innerHTML='<div><div class="db-date">'+esc(d.date||'Untitled day')+'</div>'+(d.who?'<div class="db-who">'+esc(d.who)+'</div>':'')+'</div><div class="db-meta"><span>'+(n?n+(n===1?' file':' files'):'No files')+'</span><span class="db-go">Open →</span></div>';
+    b.innerHTML='<div><div class="db-date">'+esc(d.date||'Untitled day')+'</div>'+(d.who?'<div class="db-who">'+esc(d.who)+'</div>':'')+'</div><div class="db-meta"><span class="db-go">Open →</span></div>';
     board.appendChild(b);
   });
   if(EDIT){const a=document.createElement('button');a.className='day-btn add';a.onclick=addDay;a.innerHTML='<div class="db-date">+ Add Day</div><div class="db-meta"><span>New teaching day</span></div>';board.appendChild(a)}
@@ -281,12 +307,16 @@ function renderDetail(area,i){
   if(d.graphic)gfx='<div class="graphic"><img src="'+esc(d.graphic)+'" alt="Series graphic"/>'+(EDIT?'<div class="graphic-actions"><button class="btn btn-line btn-sm" onclick="pickGraphic('+i+')">Replace</button><button class="btn btn-line btn-sm" onclick="removeGraphic('+i+')">Remove</button></div>':'')+'</div>';
   else if(EDIT)gfx='<div class="graphic"><div class="graphic-slot" onclick="pickGraphic('+i+')" ondragover="gDrag(event,1)" ondragleave="gDrag(event,0)" ondrop="gDrop(event,'+i+')"><strong>+ Add Series Graphic</strong><span>Click to choose an image, or drag one here</span></div></div>';
   const series=(d.series||EDIT)?'<div class="series"><span class="series-label">Series:</span><div class="series-name"'+ce+' data-ph="Series name" oninput="bind('+i+',\'series\',this)">'+esc(d.series)+'</div></div>':'';
-  const files=d.files.length?d.files.map((f,fi)=>'<div class="attach-item" data-kind="'+esc(f.kind)+'"><span class="attach-name">'+esc(f.name)+'</span><div class="attach-acts"><a class="btn btn-line btn-sm" href="'+esc(f.url)+'" target="_blank" rel="noopener">Open</a>'+(f.kind==='file'?'<a class="btn btn-line btn-sm" href="'+esc(f.url)+'" download="'+esc(f.name)+'">Download</a>':'')+(EDIT?'<button class="icon-btn del" style="color:var(--gray-b)" onclick="removeFile('+i+','+fi+')">×</button>':'')+'</div></div>').join(''):'<div class="attach-empty">'+(EDIT?'No files yet.':'No files for this day.')+'</div>';
+  const files=d.files.length?d.files.map((f,fi)=>'<div class="attach-item" data-kind="'+esc(f.kind)+'"><span class="attach-name">'+esc(f.name)+'</span><div class="attach-acts"><a class="btn btn-line btn-sm" href="'+esc(openHref(f))+'" target="_blank" rel="noopener">Open</a>'+(f.kind==='file'?'<a class="btn btn-line btn-sm" href="'+esc(f.url)+'" download="'+esc(f.name)+'">Download</a>':'')+(EDIT?'<button class="icon-btn del" style="color:var(--gray-b)" onclick="removeFile('+i+','+fi+')">×</button>':'')+'</div></div>').join(''):'<div class="attach-empty">'+(EDIT?'No files yet.':'No files for this day.')+'</div>';
   area.innerHTML='<div class="day-detail"><div class="day-header"><button class="back-btn" onclick="closeDay()">← All Days</button><div class="day-titles"><div class="day-date"'+ce+' data-ph="Date" oninput="bind('+i+',\'date\',this)">'+esc(d.date)+'</div><div class="day-who"'+ce+' data-ph="Communicator name" oninput="bind('+i+',\'who\',this)">'+esc(d.who)+'</div></div><div class="day-tools edit-only"><button class="icon-btn" onclick="copyDayLink('+i+')">Copy Link</button><button class="icon-btn del" onclick="deleteDay('+i+')">×</button></div></div><div class="day-body">'+series+gfx+'<div class="rich"'+ce+' data-ph="What\'s being taught, and anything else this communicator needs..." oninput="bind('+i+',\'body\',this,1)">'+(d.body||'')+'</div><div class="day-attachments"><span class="attach-label">Files &amp; Links</span><div class="attach-list">'+files+'</div><div class="row-actions edit-only"><button class="btn btn-line btn-sm" onclick="pickFile('+i+')">+ Upload File</button><button class="btn btn-line btn-sm" onclick="addLink('+i+')">+ Add Link</button></div></div></div></div>';
 }
 function renderGuide(){
   const g=$('#guideGrid'),ce=EDIT?' contenteditable="true"':'';
-  g.innerHTML=DATA.guide.map((c,i)=>'<div class="info-card'+(c.full?' full':'')+'"><h3'+ce+' data-ph="Section title" oninput="bindGuide('+i+',\'title\',this)">'+esc(c.title)+'</h3><div class="rich"'+ce+' data-ph="Write this section…" oninput="bindGuide('+i+',\'html\',this,1)">'+(c.html||'')+'</div>'+(EDIT?'<div class="card-tools"><button class="btn btn-line btn-sm" onclick="toggleFull('+i+')">'+(c.full?'Half Width':'Full Width')+'</button><button class="btn btn-line btn-sm" onclick="deleteCard('+i+')">Delete</button></div>':'')+'</div>').join('');
+  const titleCe=EDIT?' contenteditable="true" onclick="event.preventDefault()"':'';
+  const tools=i=>EDIT?'<div class="card-tools"><button class="btn btn-line btn-sm" onclick="toggleFull('+i+')">'+(DATA.guide[i].full?'Half Width':'Full Width')+'</button><button class="btn btn-line btn-sm" onclick="toggleCollapsible('+i+')">'+(DATA.guide[i].collapsible?'Remove Dropdown':'Make Dropdown')+'</button><button class="btn btn-line btn-sm" onclick="deleteCard('+i+')">Delete</button></div>':'';
+  g.innerHTML=DATA.guide.map((c,i)=>c.collapsible?
+    '<details class="info-card'+(c.full?' full':'')+'"><summary><h3'+titleCe+' data-ph="Section title" oninput="bindGuide('+i+',\'title\',this)">'+esc(c.title)+'</h3><span class="accordion-arrow"></span></summary><div class="accordion-body"><div class="rich"'+ce+' data-ph="Write this section…" oninput="bindGuide('+i+',\'html\',this,1)">'+(c.html||'')+'</div>'+tools(i)+'</div></details>'
+    :'<div class="info-card'+(c.full?' full':'')+'"><h3'+ce+' data-ph="Section title" oninput="bindGuide('+i+',\'title\',this)">'+esc(c.title)+'</h3><div class="rich"'+ce+' data-ph="Write this section…" oninput="bindGuide('+i+',\'html\',this,1)">'+(c.html||'')+'</div>'+tools(i)+'</div>').join('');
 }
 function renderVideo(){
   const v=DATA.video,a=$('#videoArea');
@@ -308,9 +338,10 @@ function openDay(i){openIdx=i;renderContent();window.scrollTo(0,0)}
 function closeDay(){openIdx=null;renderContent()}
 function addDay(){DATA.days.push({date:'',who:'',series:'',graphic:'',body:'',files:[]});openIdx=DATA.days.length-1;renderContent();queue();const el=document.querySelector('.day-date');if(el)el.focus()}
 function deleteDay(i){if(!confirm('Remove "'+(DATA.days[i].date||'this day')+'"?'))return;DATA.days.splice(i,1);openIdx=null;renderContent();queue()}
-function addCard(){DATA.guide.push({title:'New Section',html:'',full:false});renderGuide();queue()}
+function addCard(){DATA.guide.push({title:'New Section',html:'',full:false,collapsible:false});renderGuide();queue()}
 function deleteCard(i){if(!confirm('Delete "'+(DATA.guide[i].title||'this section')+'"?'))return;DATA.guide.splice(i,1);renderGuide();queue()}
 function toggleFull(i){DATA.guide[i].full=!DATA.guide[i].full;renderGuide();queue()}
+function toggleCollapsible(i){DATA.guide[i].collapsible=!DATA.guide[i].collapsible;renderGuide();queue()}
 function setVideoUrl(){const u=prompt('Paste the video link (YouTube)',DATA.video.url||'');if(u===null)return;DATA.video.url=u.trim();renderVideo();queue()}
 function copyDayLink(i){const url=location.origin+location.pathname+'?day='+i;navigator.clipboard.writeText(url).then(()=>toast('Link copied — send it to them'),()=>prompt('Copy this link:',url))}
 function removeFile(i,fi){DATA.days[i].files.splice(fi,1);renderContent();queue()}

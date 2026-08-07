@@ -41,44 +41,28 @@
   ],
   "guide": [
     {
-      "title": "Class Times — Mon / Tue / Fri",
-      "html": "<ul><li><strong>2nd Hour:</strong> 8:25–9:17am (door open 8:20, start class 8:30)</li><li><strong>3rd Hour:</strong> 9:25–10:17am (door open 9:20, start class 9:30)</li><li><strong>5th Hour:</strong> 12:19–1:11pm (door open 12:15, start class 12:25)</li></ul>",
-      "full": false
+      "title": "Class Times",
+      "html": "<h4>Mon / Tue / Fri</h4><ul><li><strong>2nd Hour:</strong> 8:25–9:17am (door open 8:20, start class 8:30)</li><li><strong>3rd Hour:</strong> 9:25–10:17am (door open 9:20, start class 9:30)</li><li><strong>5th Hour:</strong> 12:19–1:11pm (door open 12:15, start class 12:25)</li></ul><h4>Wednesday</h4><ul><li>Conference time: 9:18–9:58am — youth hang out at the coffee shop until 10:15</li><li><strong>3rd Hour:</strong> 10:15–11:45am (start class 10:20)</li><li>Lunch/Hangout: 11:45am–1:00pm — 3rd &amp; 5th hour hang out together until 3rd hour leaves by 12:15pm</li><li><strong>5th Hour:</strong> 12:45–2:15pm (door open 11:45am)</li></ul><h4>Thursday</h4><ul><li><strong>2nd Hour:</strong> 7:25–9:18am (door open 7:20)</li><li>Conference time: 9:18–9:58am — dismiss youth who are in a club; others hang out at the coffee shop until 9:45am</li></ul>",
+      "full": true,
+      "collapsible": true
     },
     {
-      "title": "Class Times — Wednesday",
-      "html": "<ul><li>Conference time: 9:18–9:58am — youth hang out at the coffee shop until 10:15</li><li><strong>3rd Hour:</strong> 10:15–11:45am (start class 10:20)</li><li>Lunch/Hangout: 11:45am–1:00pm — 3rd &amp; 5th hour hang out together until 3rd hour leaves by 12:15pm</li><li><strong>5th Hour:</strong> 12:45–2:15pm (door open 11:45am)</li></ul>",
-      "full": false
+      "title": "Room Set-Up",
+      "html": "<p><strong>Propping Open the Door</strong></p><ol><li>Youth enter/exit from the gray double doors — prop the door with the doorstop inside.</li><li>Once class has begun, close the door.</li></ol><p><strong>Set-up music</strong> — the monitor on the far left controls the Spotify connected to the top keyboard.</p><ol><li>Turn on the large soundboard with the switch on the back of the board near the plug.</li><li>If the computer is off and the space bar doesn't wake the screen, turn it on with the silver button underneath the desk on the bottom of the box on the right.</li><li>Password for both computers: <strong>12345</strong></li><li>Open Spotify, play the playlist onto \"this computer.\"</li><li>On the soundboard, put the \"pk\" to D on the far left — this moves all sliders down.</li><li>Move the \"Spotify\" volume adjuster up and the far-right \"St Main\" slider/fader up and unmuted.</li><li>Click play on Spotify.</li></ol><p>If none of this works, turn up volume on the board for Sonos 1 or 2 — you won't be able to change songs, only volume.</p><p><strong>Set-up audio from your computer</strong></p><ol><li>Make sure the soundboard is already on.</li><li>Unplug the Aux cord from the left side of the Mac (far right of the desk).</li><li>Plug into the aux port on your computer.</li><li>Turn up the \"SFX\" slider on the soundboard.</li></ol><p><strong>Set-up projector/slides</strong></p><ol><li>Turn on the projector with the touch screen under the monitors (between the keyboards and \"Carbonite switcher\").</li><li>Plug the HDMI cord and adapter into your computer and the box on the far right at the top.</li><li>Make sure the \"Carbonite switcher\" is displaying HDMI — switch to \"2\" on the Program row if not.</li><li>Connect the USB receiver (grey sleeve, top drawer, bottom of the remote) for the remote on the TV.</li><li>Switch slides with the clicker (found in the drawer).</li></ol><p><strong>Set-up a microphone</strong></p><ol><li>Grab the microphone labeled \"VOX 1\" on top of the tool cart.</li><li>On the right half of the soundboard, click \"F\" for Pk.</li><li>Unmute by clicking the red mute button above VOX 1.</li><li>Turn up volume on VOX 1 using the slider.</li></ol><p><strong>Bibles</strong></p><p>Stored in Room 2. The youth know where to find them; have one youth (the table leader) from each table grab the Bibles needed for their table.</p>",
+      "full": true,
+      "collapsible": true
     },
     {
-      "title": "Class Times — Thursday",
-      "html": "<ul><li><strong>2nd Hour:</strong> 7:25–9:18am (door open 7:20)</li><li>Conference time: 9:18–9:58am — dismiss youth who are in a club; others hang out at the coffee shop until 9:45am</li></ul>",
-      "full": false
-    },
-    {
-      "title": "Room Location",
-      "html": "Seminary meets in the Preteen (Grades 4–5) room in Building C.",
-      "full": true
-    },
-    {
-      "title": "Setting Up the Room",
-      "html": "<p><strong>Propping Open the Door</strong></p><ol><li>Youth enter/exit from the gray double doors — prop the door with the doorstop inside.</li><li>Once class has begun, close the door.</li></ol><p><strong>Set-up music</strong> — the monitor on the far left controls the Spotify connected to the top keyboard.</p><ol><li>Turn on the large soundboard with the switch on the back of the board near the plug.</li><li>If the computer is off and the space bar doesn't wake the screen, turn it on with the silver button underneath the desk on the bottom of the box on the right.</li><li>Password for both computers: <strong>ask Mason</strong></li><li>Open Spotify, play the playlist onto \"this computer.\"</li><li>On the soundboard, put the \"pk\" to D on the far left — this moves all sliders down.</li><li>Move the \"Spotify\" volume adjuster up and the far-right \"St Main\" slider/fader up and unmuted.</li><li>Click play on Spotify.</li></ol><p>If none of this works, turn up volume on the board for Sonos 1 or 2 — you won't be able to change songs, only volume.</p><p><strong>Set-up audio from your computer</strong></p><ol><li>Make sure the soundboard is already on.</li><li>Unplug the Aux cord from the left side of the Mac (far right of the desk).</li><li>Plug into the aux port on your computer.</li><li>Turn up the \"SFX\" slider on the soundboard.</li></ol><p><strong>Set-up projector/slides</strong></p><ol><li>Turn on the projector with the touch screen under the monitors (between the keyboards and \"Carbonite switcher\").</li><li>Plug the HDMI cord and adapter into your computer and the box on the far right at the top.</li><li>Make sure the \"Carbonite switcher\" is displaying HDMI — switch to \"2\" on the Program row if not.</li><li>Connect the USB receiver (grey sleeve, top drawer, bottom of the remote) for the remote on the TV.</li><li>Switch slides with the clicker (found in the drawer).</li></ol><p><strong>Set-up a microphone</strong></p><ol><li>Grab the microphone labeled \"VOX 1\" on top of the tool cart.</li><li>On the right half of the soundboard, click \"F\" for Pk.</li><li>Unmute by clicking the red mute button above VOX 1.</li><li>Turn up volume on VOX 1 using the slider.</li></ol>",
-      "full": true
-    },
-    {
-      "title": "Bibles",
-      "html": "Stored in Room 2. The youth know where to find them; have one youth (the table leader) from each table grab the Bibles needed for their table.",
-      "full": true
-    },
-    {
-      "title": "Shutting Down the Room",
+      "title": "Room Shut Down",
       "html": "<p><strong>Soundboard</strong></p><ol><li>Click the utility button on the soundboard screen.</li><li>Click Power Down on the soundboard screen.</li><li>Wait for the screen to say it's safe to turn off, then flip the switch on the back of the board by the plug.</li><li>Put the cover over the console.</li></ol><p><strong>Projector</strong> — use the touch screen under the monitors to power it off.</p><p><strong>Computer</strong> — do <strong>NOT</strong> shut down; put both computers to sleep.</p><p>Make sure all doors are shut before leaving, and anything left by youth is put in the storage closet.</p>",
-      "full": true
+      "full": true,
+      "collapsible": true
     },
     {
       "title": "Student Expectations / Discipline",
       "html": "<ul><li>They know and are expected to respect you and any decisions you make (even if it is different from what I normally do).</li><li>If they are being disruptive, disrespectful, or anything similar, you can ask for their phone and then send them to Room 1 or 2. Please let me know if you do this so I can have a conversation with them.</li><li>They are not supposed to be on their phones or laptops, unless they specifically ask you. If you catch them on their phones, you do not need to give them a warning, unless you think necessary (they already know). Take their phone if they go on it. They can then get their phone after class.</li><li>They have a seating chart (you guys can follow this, but if you want to be “the cool sub” you can let them sit where they want if they are respectful lol).</li><li>Please take attendance. I will give you their seating charts for each class period you can use as their attendance and just mark if there is a student absent. You can either text me a picture of these papers or leave on my desk!</li></ul>",
-      "full": true
+      "full": true,
+      "collapsible": true
     }
   ],
   "video": {
