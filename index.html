@@ -11,7 +11,7 @@
 html{height:100%}
 body{font-family:var(--font-body);font-weight:300;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100%;display:flex;flex-direction:column}
 h1,h2,h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;line-height:1.02}
-a{color:var(--blue-deep);text-decoration:none}a:hover{color:var(--blue);text-decoration:underline}
+a{color:var(--blue-deep);text-decoration:none}
 .eyebrow{font-family:var(--font-display);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:var(--track-label)}
 header{background:var(--ink);color:var(--white);padding:28px 32px 24px}
 .header-inner{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px}
@@ -24,17 +24,16 @@ header{background:var(--ink);color:var(--white);padding:28px 32px 24px}
 .btn{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:var(--track-label);text-transform:uppercase;border:none;cursor:pointer;padding:11px 18px;transition:background .14s cubic-bezier(.2,0,.2,1),transform .14s,color .14s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .btn:active{transform:scale(.98)}
 .btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.btn-primary{background:var(--blue);color:var(--ink)}.btn-primary:hover{background:var(--blue-press)}
-.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.35)}.btn-ghost:hover{background:rgba(255,255,255,.12)}
-.btn-line{background:transparent;color:var(--ink);border:1px solid var(--ink)}.btn-line:hover{background:var(--ink-12)}
+.btn-primary{background:var(--blue);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.35)}
+.btn-line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
 .btn-sm{padding:8px 13px;font-size:11px}
 .view-badge{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:9px 14px;transition:color .14s,border-color .14s}
-.view-badge:hover{color:var(--blue);border-color:var(--blue)}
 nav{background:var(--white);border-bottom:2px solid var(--ink);position:sticky;top:0;z-index:20;padding:0 32px;overflow-x:auto;scrollbar-width:none}
 .nav-inner{display:flex;justify-content:flex-end;max-width:1200px;margin:0 auto}
 nav::-webkit-scrollbar{display:none}
 .tab-btn{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:var(--track-label);text-transform:uppercase;background:none;border:none;padding:17px 20px 15px;cursor:pointer;color:var(--gray-b);position:relative;white-space:nowrap;transition:color .14s}
-.tab-btn:hover,.tab-btn.active{color:var(--ink)}
+.tab-btn.active{color:var(--ink)}
 .tab-btn.active::after{content:"";position:absolute;left:20px;right:20px;bottom:-2px;height:4px;background:var(--blue)}
 main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:100%}
 .panel{display:none}.panel.active{display:block;animation:fade .18s cubic-bezier(.2,0,.2,1)}
@@ -45,20 +44,15 @@ main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .section-head .sub{font-size:14px;color:var(--ink-60);margin-top:8px;max-width:60ch}
 .day-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .day-btn{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:16px;min-height:118px;text-align:left;background:var(--gray-a);border:1px solid var(--ink);padding:16px 17px;cursor:pointer;font-family:inherit;transition:background .14s cubic-bezier(.2,0,.2,1),color .14s}
-.day-btn:hover{background:var(--ink);color:var(--white)}
 .day-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .db-date{font-family:var(--font-display);font-weight:700;font-size:24.225px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
 .db-who{font-family:var(--font-display);font-weight:700;font-size:16.5px;letter-spacing:.153em;text-transform:uppercase;color:var(--blue-deep)}
-.day-btn:hover .db-who{color:var(--blue)}
 .db-meta{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-family:var(--font-display);font-weight:700;font-size:10px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--gray-b)}
-.day-btn:hover .db-meta{color:rgba(255,255,255,.6)}
 .db-go{color:var(--blue)}
 .day-btn.add{border-style:dashed;border-color:var(--gray-b);color:var(--ink-60);justify-content:center}
-.day-btn.add:hover{background:var(--ink-12);color:var(--ink);border-color:var(--ink)}
 .day-detail{border:1px solid var(--ink-12);max-width:900px}
 .day-header{display:flex;align-items:center;gap:10px;background:var(--ink);padding:13px 14px}
 .back-btn{background:none;border:none;color:var(--blue);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;cursor:pointer;padding:6px 9px;flex-shrink:0}
-.back-btn:hover{background:rgba(255,255,255,.14)}
 .day-titles{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .day-date,.day-who{outline:none;padding:2px 5px;font-family:var(--font-display);font-weight:700;text-transform:uppercase}
 .day-date{color:var(--white);font-size:16px;letter-spacing:.04em}
@@ -68,9 +62,7 @@ main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .day-date:empty::before,.day-who:empty::before{color:rgba(255,255,255,.4)}
 .day-tools{display:flex;align-items:center;gap:4px;flex-shrink:0}
 .icon-btn{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;padding:6px 9px;transition:color .14s,background .14s}
-.icon-btn:hover{color:var(--white);background:rgba(255,255,255,.14)}
 .icon-btn.del{font-size:19px;line-height:1;letter-spacing:0;padding:3px 9px}
-.icon-btn.del:hover{color:var(--red);background:rgba(222,83,88,.15)}
 .day-body{padding:20px}
 .series{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--ink-12)}
 .series-label{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--ink-60)}
@@ -115,13 +107,15 @@ details[open]>summary .accordion-arrow::after{content:'\2212'}
 .video-wrap{border:1px solid var(--ink-12);padding:22px;max-width:900px}
 .video-frame{position:relative;padding-top:56.25%;background:var(--ink);overflow:hidden;display:block}
 .video-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.8;transition:opacity .18s}
-.video-frame:hover img{opacity:1}
 .video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:74px;background:var(--blue);display:flex;align-items:center;justify-content:center}
 .video-play::after{content:"";border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent var(--ink);margin-left:5px}
 .video-link-row{margin-top:14px;font-size:14px;font-weight:600}
 .sheet-scrim{position:fixed;inset:0;background:rgba(30,30,30,.72);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
 .sheet-scrim.open{display:flex;animation:fade .18s cubic-bezier(.2,0,.2,1)}
 .sheet{background:var(--white);max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 18px 48px rgba(0,0,0,.3)}
+.preview-window{background:var(--white);width:100%;max-width:760px;height:82vh;max-height:640px;display:flex;flex-direction:column;box-shadow:0 18px 48px rgba(0,0,0,.3)}
+.preview-body{flex:1;min-height:0;background:var(--gray-a)}
+.preview-body iframe{width:100%;height:100%;border:none;display:block;background:var(--white)}
 .sheet-head{background:var(--ink);color:var(--white);padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .sheet-head h3{font-size:17px;letter-spacing:.05em;color:var(--white)}
 .sheet-body{padding:22px}
@@ -136,20 +130,36 @@ footer{background:var(--ink);flex-shrink:0}
 .footer-inner{height:48px;padding:0 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .footer-inner button{font-family:var(--font-display);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:var(--track-label);background:none;border:none;cursor:pointer;color:var(--ink);transition:color .14s}
 .footer-logo{height:24px;width:auto;display:block}
-.footer-inner button:hover{color:var(--gray-b)}
 .loading{padding:60px 0;text-align:center;color:var(--gray-b);font-family:var(--font-display);font-weight:700;letter-spacing:var(--track-label);text-transform:uppercase;font-size:12px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:var(--track-label);text-transform:uppercase;padding:13px 20px;z-index:200;opacity:0;pointer-events:none;transition:opacity .18s}
 .toast.show{opacity:1}
 ::selection{background:var(--blue);color:var(--ink)}
 body:not(.editing) .edit-only{display:none!important}
+@media(hover:hover) and (pointer:fine){
+a:hover{color:var(--blue);text-decoration:underline}
+.btn-primary:hover{background:var(--blue-press)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-line:hover{background:var(--ink-12)}
+.view-badge:hover{color:var(--blue);border-color:var(--blue)}
+.tab-btn:hover{color:var(--ink)}
+.day-btn:hover{background:var(--ink);color:var(--white)}
+.day-btn:hover .db-who{color:var(--blue)}
+.day-btn:hover .db-meta{color:rgba(255,255,255,.6)}
+.day-btn.add:hover{background:var(--ink-12);color:var(--ink);border-color:var(--ink)}
+.back-btn:hover{background:rgba(255,255,255,.14)}
+.icon-btn:hover{color:var(--white);background:rgba(255,255,255,.14)}
+.icon-btn.del:hover{color:var(--red);background:rgba(222,83,88,.15)}
+.video-frame:hover img{opacity:1}
+.footer-inner button:hover{color:var(--gray-b)}
+}
 @media(max-width:720px){
-header{padding:20px 18px}.brand h1{font-size:25px}.brand-logo{width:42px;height:42px}
+header{padding:20px 27px}.brand h1{font-size:25px}.brand-logo{width:42px;height:42px}
 .header-actions{width:100%}.header-actions .btn{flex:1;min-width:132px;padding:13px 12px}
-nav{padding:0 12px}.tab-btn{padding:15px 14px 13px;font-size:12px}.tab-btn.active::after{left:14px;right:14px}
-main{padding:24px 18px 56px}.section-head h2{font-size:21px}
+nav{padding:0 18px}.tab-btn{padding:15px 14px 13px;font-size:12px}.tab-btn.active::after{left:14px;right:14px}
+main{padding:24px 27px 56px}.section-head h2{font-size:21px}
 .day-body{padding:16px}.day-board{grid-template-columns:1fr}.day-btn{min-height:96px}
 .info-grid{grid-template-columns:1fr}.info-card{padding:18px}
-.video-wrap{padding:0;border:none}.footer-inner{padding:0 18px}
+.video-wrap{padding:0;border:none}.footer-inner{padding:0 27px}
 }
 @media print{header .header-actions,nav,.day-tools,.row-actions,.card-tools,.sheet-scrim,.day-board,.back-btn,footer button{display:none!important}.panel{display:block!important;page-break-before:always}}
 </style>
@@ -230,6 +240,12 @@ main{padding:24px 18px 56px}.section-head h2{font-size:21px}
 <div class="sheet-body" id="sheetBody"></div>
 </div>
 </div>
+<div class="sheet-scrim" id="previewScrim" onclick="if(event.target===this)closePreview()">
+<div class="preview-window">
+<div class="sheet-head"><h3 id="previewTitle">Preview</h3><button class="icon-btn del" onclick="closePreview()">×</button></div>
+<div class="preview-body"><iframe id="previewFrame" title="File preview" referrerpolicy="no-referrer"></iframe></div>
+</div>
+</div>
 <div class="toast" id="toast"></div>
 <script>
 const CFG_KEY='rpc-yth-editor-cfg';
@@ -253,6 +269,14 @@ function openHref(f){
   }
   return f.url;
 }
+function openPreview(i,fi){
+  const f=DATA.days[i].files[fi];
+  if(!f)return;
+  $('#previewTitle').textContent=f.name||'Preview';
+  $('#previewFrame').src=openHref(f);
+  $('#previewScrim').classList.add('open');
+}
+function closePreview(){$('#previewScrim').classList.remove('open');$('#previewFrame').src='about:blank'}
 
 /* ---------- tabs / footer ---------- */
 function selectTab(tab){document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));const b=document.querySelector('.tab-btn[data-tab="'+tab+'"]');if(b)b.classList.add('active');const p=$('#panel-'+tab);if(p)p.classList.add('active')}
@@ -307,7 +331,7 @@ function renderDetail(area,i){
   if(d.graphic)gfx='<div class="graphic"><img src="'+esc(d.graphic)+'" alt="Series graphic"/>'+(EDIT?'<div class="graphic-actions"><button class="btn btn-line btn-sm" onclick="pickGraphic('+i+')">Replace</button><button class="btn btn-line btn-sm" onclick="removeGraphic('+i+')">Remove</button></div>':'')+'</div>';
   else if(EDIT)gfx='<div class="graphic"><div class="graphic-slot" onclick="pickGraphic('+i+')" ondragover="gDrag(event,1)" ondragleave="gDrag(event,0)" ondrop="gDrop(event,'+i+')"><strong>+ Add Series Graphic</strong><span>Click to choose an image, or drag one here</span></div></div>';
   const series=(d.series||EDIT)?'<div class="series"><span class="series-label">Series:</span><div class="series-name"'+ce+' data-ph="Series name" oninput="bind('+i+',\'series\',this)">'+esc(d.series)+'</div></div>':'';
-  const files=d.files.length?d.files.map((f,fi)=>'<div class="attach-item" data-kind="'+esc(f.kind)+'"><span class="attach-name">'+esc(f.name)+'</span><div class="attach-acts"><a class="btn btn-line btn-sm" href="'+esc(openHref(f))+'" target="_blank" rel="noopener">Open</a>'+(f.kind==='file'?'<a class="btn btn-line btn-sm" href="'+esc(f.url)+'" download="'+esc(f.name)+'">Download</a>':'')+(EDIT?'<button class="icon-btn del" style="color:var(--gray-b)" onclick="removeFile('+i+','+fi+')">×</button>':'')+'</div></div>').join(''):'<div class="attach-empty">'+(EDIT?'No files yet.':'No files for this day.')+'</div>';
+  const files=d.files.length?d.files.map((f,fi)=>'<div class="attach-item" data-kind="'+esc(f.kind)+'"><span class="attach-name">'+esc(f.name)+'</span><div class="attach-acts"><button type="button" class="btn btn-line btn-sm" onclick="openPreview('+i+','+fi+')">Preview</button>'+(f.kind==='file'?'<a class="btn btn-line btn-sm" href="'+esc(f.url)+'" download="'+esc(f.name)+'">Download</a>':'')+(EDIT?'<button class="icon-btn del" style="color:var(--gray-b)" onclick="removeFile('+i+','+fi+')">×</button>':'')+'</div></div>').join(''):'<div class="attach-empty">'+(EDIT?'No files yet.':'No files for this day.')+'</div>';
   area.innerHTML='<div class="day-detail"><div class="day-header"><button class="back-btn" onclick="closeDay()">← All Days</button><div class="day-titles"><div class="day-date"'+ce+' data-ph="Date" oninput="bind('+i+',\'date\',this)">'+esc(d.date)+'</div><div class="day-who"'+ce+' data-ph="Communicator name" oninput="bind('+i+',\'who\',this)">'+esc(d.who)+'</div></div><div class="day-tools edit-only"><button class="icon-btn" onclick="copyDayLink('+i+')">Copy Link</button><button class="icon-btn del" onclick="deleteDay('+i+')">×</button></div></div><div class="day-body">'+series+gfx+'<div class="rich"'+ce+' data-ph="What\'s being taught, and anything else this communicator needs..." oninput="bind('+i+',\'body\',this,1)">'+(d.body||'')+'</div><div class="day-attachments"><span class="attach-label">Files &amp; Links</span><div class="attach-list">'+files+'</div><div class="row-actions edit-only"><button class="btn btn-line btn-sm" onclick="pickFile('+i+')">+ Upload File</button><button class="btn btn-line btn-sm" onclick="addLink('+i+')">+ Add Link</button></div></div></div></div>';
 }
 function renderGuide(){
