@@ -41,7 +41,7 @@ nav::-webkit-scrollbar{display:none}
 .tab-btn{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:var(--track-label);text-transform:uppercase;background:none;border:none;padding:17px 20px 15px;cursor:pointer;color:var(--gray-b);position:relative;white-space:nowrap;transition:color .14s}
 .tab-btn.active{color:var(--ink)}
 .tab-btn.active::after{content:"";position:absolute;left:20px;right:20px;bottom:-2px;height:4px;background:var(--blue)}
-main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:100%}
+main{max-width:1600px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:100%}
 .panel{display:none}.panel.active{display:block;animation:fade .18s cubic-bezier(.2,0,.2,1)}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .section-head{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
@@ -56,6 +56,25 @@ main{max-width:1200px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .db-meta{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-family:var(--font-display);font-weight:700;font-size:10px;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--gray-b)}
 .db-go{color:var(--blue)}
 .day-btn.add{border-style:dashed;border-color:var(--gray-b);color:var(--ink-60);justify-content:center}
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 64px;margin:16px auto 30px;max-width:1536px;align-items:stretch;justify-items:center}
+.home-cell{min-height:auto;width:100%;display:flex;flex-direction:column;align-items:center}
+.home-image{overflow:hidden;padding:0}
+.home-image img{width:100%;height:100%;object-fit:cover;display:block}
+.home-image-photo{display:flex;align-items:flex-start;justify-content:center}
+.home-image-photo img{width:100%;height:100%;object-fit:cover}
+.home-right-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;height:100%}
+.home-image-sm{display:flex;align-items:center;justify-content:center}
+.home-image-sm img{width:56%;height:auto;object-fit:contain}
+.home-stats{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:31px;line-height:1.08;text-align:center;width:100%;margin-top:48px}
+.home-stat-line{font-family:var(--font-body);font-weight:700;font-size:50px;color:var(--ink);letter-spacing:0;text-transform:none;margin:0;white-space:nowrap}
+.home-stat-big{font-size:124px;color:var(--blue-deep)}
+.home-msg{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;margin:0;padding:0;margin-top:126px}
+.home-msg p{font-size:37px}
+.home-msg-full{grid-column:1/-1}
+.day-tile{position:relative}
+.day-tile .day-btn{width:100%}
+.day-tile-del{position:absolute;top:8px;right:8px;z-index:2;background:var(--white);color:var(--gray-b);border:1px solid var(--ink-12);border-radius:999px;width:26px;height:26px;line-height:1;display:flex;align-items:center;justify-content:center;font-size:17px}
+.day-tile-del:hover{color:var(--white);background:var(--red);border-color:var(--red)}
 .day-detail{border:1px solid var(--ink-12);max-width:900px}
 .day-header{display:flex;align-items:center;gap:10px;background:var(--ink);padding:13px 14px}
 .back-btn{background:none;border:none;color:var(--blue);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;cursor:pointer;padding:6px 9px;flex-shrink:0}
@@ -172,6 +191,7 @@ nav.open{display:flex}
 main{padding:24px 27px 56px}.section-head h2{font-size:21px}
 .day-body{padding:16px}.day-board{grid-template-columns:1fr}.day-btn{min-height:96px}
 .info-grid{grid-template-columns:1fr}.info-card{padding:18px}
+.home-grid{grid-template-columns:1fr;gap:13px;margin-bottom:65px}.home-cell{min-height:auto}.home-image img{max-height:508px}.home-stat-big{font-size:86px}.home-stat-line{font-size:48px}.home-right-col{height:auto;gap:20px}.home-image-sm{margin-top:0}
 .video-wrap{padding:0;border:none}.footer-inner{padding:0 27px}
 }
 @media print{header .header-actions,nav,.day-tools,.row-actions,.card-tools,.sheet-scrim,.day-board,.back-btn,footer button{display:none!important}.panel{display:block!important;page-break-before:always}}
@@ -203,11 +223,17 @@ main{padding:24px 27px 56px}.section-head h2{font-size:21px}
 </nav>
 <main>
 <section class="panel active" id="panel-home">
-<div class="section-head">
-<div>
-<span class="idx">01 &nbsp;Home</span>
-<h2>Home</h2>
+<div class="home-grid">
+<div class="home-cell home-image home-image-photo"><img src="files/6L5A4743.jpg" alt="Seminary students"/></div>
+<div class="home-cell home-right-col">
+<div class="home-stats">
+<h3 class="home-stat-line home-stat-big">70 YOUTH</h3>
+<h3 class="home-stat-line">2ND, 3RD, AND 5TH PERIOD</h3>
+<h3 class="home-stat-line">GRADES 9-12</h3>
 </div>
+<div class="home-image home-image-sm"><img src="files/9.png" alt="Seminary YTH logo"/></div>
+</div>
+<div class="home-cell home-msg home-msg-full rich"><p>Thank you so much for being a Communicator in Seminary! I believe from this you will grow in your small group communication, youth will have a closer glimpse into your life and how Jesus has impacted it, and that ultimately- youth would be equipped so that they can point people to Jesus.</p></div>
 </div>
 </section>
 <section class="panel" id="panel-content">
@@ -335,15 +361,45 @@ function renderContent(){
   if(openIdx!==null&&DATA.days[openIdx])return renderDetail(area,openIdx);
   $('#contentTitle').textContent='Your Teaching Day';
   $('#contentSub').textContent="Find your date below to see what you're teaching and grab any files you'll need.";
-  if(!DATA.days.length&&!EDIT){area.innerHTML='<p class="loading">No teaching days posted yet.</p>';return}
+  const visible=[];DATA.days.forEach((d,i)=>{if(EDIT||!isDayExpired(d.date))visible.push(i)});
+  if(!visible.length&&!EDIT){area.innerHTML='<p class="loading">No teaching days posted yet.</p>';return}
   const board=document.createElement('div');board.className='day-board';
-  DATA.days.forEach((d,i)=>{
+  visible.forEach(i=>{
+    const d=DATA.days[i];
+    const tile=document.createElement('div');tile.className='day-tile';
     const b=document.createElement('button');b.className='day-btn';b.onclick=()=>openDay(i);
     b.innerHTML='<div><div class="db-date">'+esc(d.date||'Untitled day')+'</div>'+(d.who?'<div class="db-who">'+esc(d.who)+'</div>':'')+'</div><div class="db-meta"><span class="db-go">Open →</span></div>';
-    board.appendChild(b);
+    tile.appendChild(b);
+    if(EDIT){
+      const del=document.createElement('button');del.type='button';del.className='day-tile-del';del.title='Delete this day';del.setAttribute('aria-label','Delete this day');del.textContent='×';
+      del.onclick=e=>{e.stopPropagation();deleteDay(i)};
+      tile.appendChild(del);
+    }
+    board.appendChild(tile);
   });
   if(EDIT){const a=document.createElement('button');a.className='day-btn add';a.onclick=addDay;a.innerHTML='<div class="db-date">+ Add Day</div><div class="db-meta"><span>New teaching day</span></div>';board.appendChild(a)}
   area.innerHTML='';area.appendChild(board);
+}
+function parseDayDate(s){
+  if(!s)return null;
+  const d=new Date(s.replace(/\./g,''));
+  if(isNaN(d))return null;
+  d.setHours(0,0,0,0);
+  return d;
+}
+function isDayExpired(dateStr){
+  const d=parseDayDate(dateStr);
+  if(!d)return false;
+  const cutoff=new Date(d);cutoff.setDate(cutoff.getDate()+1);
+  const today=new Date();today.setHours(0,0,0,0);
+  return today>=cutoff;
+}
+function pruneExpiredDays(){
+  let changed=false;
+  for(let i=DATA.days.length-1;i>=0;i--){
+    if(isDayExpired(DATA.days[i].date)){DATA.days.splice(i,1);changed=true}
+  }
+  return changed;
 }
 function renderDetail(area,i){
   const d=DATA.days[i];
@@ -423,6 +479,7 @@ async function enterEdit(quiet){
     else if(!r.ok){throw new Error('auth')}
     else{const j=await r.json();SHA=j.sha;DATA=normalize(JSON.parse(b64decode(j.content)))}
     EDIT=true;document.body.classList.add('editing');
+    if(pruneExpiredDays())queue();
     if(!quiet)renderAll();
     return true;
   }catch(e){EDIT=false;document.body.classList.remove('editing');if(!quiet)toast('Could not connect');return false}
