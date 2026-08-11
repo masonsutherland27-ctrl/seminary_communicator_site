@@ -72,6 +72,8 @@ main{max-width:1600px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .day-tile .day-btn{width:100%}
 .day-tile-del{position:absolute;top:8px;right:8px;z-index:2;background:var(--white);color:var(--gray-b);border:1px solid var(--ink-12);border-radius:999px;width:26px;height:26px;line-height:1;display:flex;align-items:center;justify-content:center;font-size:17px}
 .day-tile-del:hover{color:var(--white);background:var(--red);border-color:var(--red)}
+.day-avatar{position:absolute;top:8px;right:8px;width:62px;height:62px;border-radius:50%;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:1}
+.day-tile:has(.day-tile-del) .day-avatar{right:44px}
 .day-detail{border:1px solid var(--ink-12);max-width:900px}
 .day-header{display:flex;align-items:center;gap:10px;background:var(--ink);padding:13px 14px}
 .back-btn{background:none;border:none;color:var(--blue);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);text-transform:uppercase;cursor:pointer;padding:6px 9px;flex-shrink:0}
@@ -357,6 +359,16 @@ function renderHeader(){
   if(EDIT){h.innerHTML='<span id="saveState">Saved</span><button class="btn btn-ghost" onclick="publishNow()">Save Now</button><button class="btn btn-ghost" onclick="signOut()">Lock</button>';}
   else{h.innerHTML='<span class="view-badge">View Only</span>';}
 }
+const COMM_PHOTOS=['caleb.png','jeff r.png','jonesy.png','jonny.png','jordan.png','josh.png','ronnie.png','sarai.png','shane.png','trevor.png','tyler.png'];
+const COMM_ALIASES={hunter:'jonesy.png'};
+function communicatorPhoto(who){
+  if(!who)return null;
+  const first=who.trim().split(/\s+/)[0].toLowerCase();
+  if(!first)return null;
+  const alias=COMM_ALIASES[first];
+  const match=alias||COMM_PHOTOS.find(f=>f.toLowerCase().split('.')[0].split(' ')[0]===first);
+  return match?'files/communicators 3/thumbs/'+match:null;
+}
 function renderContent(){
   const area=$('#contentArea');
   if(openIdx!==null&&DATA.days[openIdx])return renderDetail(area,openIdx);
@@ -371,6 +383,11 @@ function renderContent(){
     const b=document.createElement('button');b.className='day-btn';b.onclick=()=>openDay(i);
     b.innerHTML='<div><div class="db-date">'+esc(d.date||'Untitled day')+'</div>'+(d.who?'<div class="db-who">'+esc(d.who)+'</div>':'')+'</div><div class="db-meta"><span class="db-go">Open →</span></div>';
     tile.appendChild(b);
+    const photo=communicatorPhoto(d.who);
+    if(photo){
+      const img=document.createElement('img');img.className='day-avatar';img.src=photo;img.alt='';
+      tile.appendChild(img);
+    }
     if(EDIT){
       const del=document.createElement('button');del.type='button';del.className='day-tile-del';del.title='Delete this day';del.setAttribute('aria-label','Delete this day');del.textContent='×';
       del.onclick=e=>{e.stopPropagation();deleteDay(i)};
