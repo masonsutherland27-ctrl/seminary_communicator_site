@@ -1,20 +1,6 @@
 {
   "days": [
     {
-      "date": "Aug. 11, 2026",
-      "who": "Tyler Goodrich",
-      "series": "Gospel Perspective",
-      "graphic": "files/1786112136477-Gospel-Perspective-title.jpg",
-      "body": "<p>Hey Tyler! So excited as you are going to communicate in Seminary on <u>Tuesday, August 11</u>! You will be teaching during our Gospel Perspective series. This series highlights how the gospel changes everything: <i>Eternity, Relationships, Thoughts &amp; Emotions, <strong><u>Value &amp; Identity</u></strong>, and Actions</i>.&nbsp;</p><p>&nbsp;</p><p><strong>Your day, you will be leading through the day on Value and Identity</strong>.&nbsp;</p><p>&nbsp;</p><p>I have already built out slides for that day, but please make it your own- you have the freedom to change all of it!&nbsp;</p><p>&nbsp;</p><p><span data-teams=\"true\"></span></p><p>I will attach the slides I already had built out.</p>",
-      "files": [
-        {
-          "name": "Gospel Perspective.pptx",
-          "url": "files/1786112148592-Gospel-Perspective.pptx",
-          "kind": "file"
-        }
-      ]
-    },
-    {
       "date": "Aug. 20, 2026",
       "who": "Jonny Foley",
       "series": "Gospel Perspective",
@@ -80,5 +66,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-08-11T19:44:05.357Z"
+  "updated": "2026-08-13T21:10:21.759Z"
 }
