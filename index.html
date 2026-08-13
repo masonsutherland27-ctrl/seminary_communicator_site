@@ -72,6 +72,10 @@ main{max-width:1600px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .day-tile .day-btn{width:100%}
 .day-tile-del{position:absolute;top:8px;right:8px;z-index:2;background:var(--white);color:var(--gray-b);border:1px solid var(--ink-12);border-radius:999px;width:26px;height:26px;line-height:1;display:flex;align-items:center;justify-content:center;font-size:17px}
 .day-tile-del:hover{color:var(--white);background:var(--red);border-color:var(--red)}
+.day-tile-reorder{position:absolute;top:8px;left:8px;z-index:2;display:flex;flex-direction:column;gap:3px}
+.day-tile-reorder button{background:var(--white);color:var(--gray-b);border:1px solid var(--ink-12);border-radius:999px;width:22px;height:22px;line-height:1;display:flex;align-items:center;justify-content:center;font-size:11px;padding:0;cursor:pointer}
+.day-tile-reorder button:hover:not(:disabled){color:var(--white);background:var(--ink)}
+.day-tile-reorder button:disabled{opacity:.3;cursor:default}
 .day-avatar{position:absolute;top:8px;right:8px;width:62px;height:62px;border-radius:50%;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:1}
 .day-tile:has(.day-tile-del) .day-avatar{right:44px}
 .day-detail{border:1px solid var(--ink-12);max-width:900px}
@@ -359,7 +363,7 @@ function renderHeader(){
   if(EDIT){h.innerHTML='<span id="saveState">Saved</span><button class="btn btn-ghost" onclick="publishNow()">Save Now</button><button class="btn btn-ghost" onclick="signOut()">Lock</button>';}
   else{h.innerHTML='<span class="view-badge">View Only</span>';}
 }
-const COMM_PHOTOS=['caleb.png','jeff r.png','jonesy.png','jonny.png','jordan.png','josh.png','ronnie.png','sarai.png','shane.png','trevor.png','tyler.png'];
+const COMM_PHOTOS=['caleb.png','emily.png','jeff r.png','jonesy.png','jonny.png','jordan.png','josh.png','ronnie.png','sarah.png','sarai.png','shane.png','trevor.png','tyler.png'];
 const COMM_ALIASES={hunter:'jonesy.png'};
 function communicatorPhoto(who){
   if(!who)return null;
@@ -392,6 +396,13 @@ function renderContent(){
       const del=document.createElement('button');del.type='button';del.className='day-tile-del';del.title='Delete this day';del.setAttribute('aria-label','Delete this day');del.textContent='×';
       del.onclick=e=>{e.stopPropagation();deleteDay(i)};
       tile.appendChild(del);
+      const reorder=document.createElement('div');reorder.className='day-tile-reorder';
+      const up=document.createElement('button');up.type='button';up.title='Move earlier';up.setAttribute('aria-label','Move earlier');up.textContent='▲';up.disabled=visible.indexOf(i)===0;
+      up.onclick=e=>{e.stopPropagation();moveDay(i,-1)};
+      const down=document.createElement('button');down.type='button';down.title='Move later';down.setAttribute('aria-label','Move later');down.textContent='▼';down.disabled=visible.indexOf(i)===visible.length-1;
+      down.onclick=e=>{e.stopPropagation();moveDay(i,1)};
+      reorder.appendChild(up);reorder.appendChild(down);
+      tile.appendChild(reorder);
     }
     board.appendChild(tile);
   });
@@ -459,6 +470,7 @@ function openDay(i){openIdx=i;renderContent();window.scrollTo(0,0)}
 function closeDay(){openIdx=null;renderContent()}
 function addDay(){DATA.days.push({date:'',who:'',series:'',graphic:'',body:'',files:[]});openIdx=DATA.days.length-1;renderContent();queue();const el=document.querySelector('.day-date');if(el)el.focus()}
 function deleteDay(i){if(!confirm('Remove "'+(DATA.days[i].date||'this day')+'"?'))return;DATA.days.splice(i,1);openIdx=null;renderContent();queue()}
+function moveDay(i,dir){const j=i+dir;if(j<0||j>=DATA.days.length)return;const t=DATA.days[i];DATA.days[i]=DATA.days[j];DATA.days[j]=t;renderContent();queue()}
 function addCard(){DATA.guide.push({title:'New Section',html:'',full:false,collapsible:false});renderGuide();queue()}
 function deleteCard(i){if(!confirm('Delete "'+(DATA.guide[i].title||'this section')+'"?'))return;DATA.guide.splice(i,1);renderGuide();queue()}
 function toggleFull(i){DATA.guide[i].full=!DATA.guide[i].full;renderGuide();queue()}
