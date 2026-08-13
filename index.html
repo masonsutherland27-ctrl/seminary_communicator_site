@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Seminary Communicators — Rock Point YTH</title>
+<link href="files/favicon.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{--blue:#1EBFE1;--blue-press:#17A6C4;--blue-deep:#0E8DA8;--ink:#1E1E1E;--white:#FFFFFF;--bone:#E2DFD2;--gray-a:#DADADA;--gray-b:#B2B2B2;--red:#DE5358;--green:#AFE11E;--ink-12:rgba(30,30,30,.12);--ink-60:rgba(30,30,30,.6);--track-label:.18em;--font-display:'Archivo Narrow','Helvetica Neue',Arial,sans-serif;--font-body:'Helvetica Neue',Helvetica,Arial,sans-serif}
@@ -48,7 +49,9 @@ main{max-width:1600px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .section-head h2{font-size:26px;letter-spacing:.01em}
 .section-head .idx{font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:var(--track-label);color:var(--blue-deep);display:block;margin-bottom:8px}
 .section-head .sub{font-size:14px;color:var(--ink-60);margin-top:8px;max-width:60ch}
-.day-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.month-heading{font-size:15px;letter-spacing:.02em;color:var(--ink);padding-bottom:8px;margin:32px 0 12px;border-bottom:1px solid var(--ink-12)}
+.month-heading:first-child{margin-top:0}
+.day-board{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:8px}
 .day-btn{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:16px;min-height:118px;text-align:left;background:var(--gray-a);border:1px solid var(--ink);padding:16px 17px;cursor:pointer;font-family:inherit;transition:background .14s cubic-bezier(.2,0,.2,1),color .14s}
 .day-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .db-date{font-family:var(--font-display);font-weight:700;font-size:24.225px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1;color:var(--ink)}
@@ -201,7 +204,7 @@ main{padding:24px 27px 56px}.section-head h2{font-size:21px}
 .home-board{grid-template-columns:1fr;gap:13px;margin:20px auto 40px}.home-stat{font-size:56px}
 .video-wrap{padding:0;border:none}.footer-inner{padding:0 27px}
 }
-@media print{header .header-actions,nav,.day-tools,.row-actions,.card-tools,.sheet-scrim,.day-board,.back-btn,footer button{display:none!important}.panel{display:block!important;page-break-before:always}}
+@media print{header .header-actions,nav,.day-tools,.row-actions,.card-tools,.sheet-scrim,.day-board,.month-heading,.back-btn,footer button{display:none!important}.panel{display:block!important;page-break-before:always}}
 </style>
 </head>
 <body>
@@ -373,6 +376,15 @@ function communicatorPhoto(who){
   const match=alias||COMM_PHOTOS.find(f=>f.toLowerCase().split('.')[0].split(' ')[0]===first);
   return match?'files/communicators 3/thumbs/'+match:null;
 }
+const MONTH_NAMES=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function monthGroupOf(dateStr){
+  const m=(dateStr||'').match(/([A-Za-z]{3,})/);
+  const y=(dateStr||'').match(/(\d{4})/);
+  if(!m||!y)return{key:'other',label:'Other Dates'};
+  const idx=MONTH_NAMES.findIndex(n=>n.slice(0,3).toLowerCase()===m[1].slice(0,3).toLowerCase());
+  if(idx<0)return{key:'other',label:'Other Dates'};
+  return{key:y[1]+'-'+idx,label:MONTH_NAMES[idx]+' '+y[1]};
+}
 function renderContent(){
   const area=$('#contentArea');
   if(openIdx!==null&&DATA.days[openIdx])return renderDetail(area,openIdx);
@@ -380,34 +392,52 @@ function renderContent(){
   $('#contentSub').textContent="Find your date below to see what you're teaching and grab any files you'll need.";
   const visible=[];DATA.days.forEach((d,i)=>{if(EDIT||!isDayExpired(d.date))visible.push(i)});
   if(!visible.length&&!EDIT){area.innerHTML='<p class="loading">No teaching days posted yet.</p>';return}
-  const board=document.createElement('div');board.className='day-board';
+  const groups=[];const groupAt={};
   visible.forEach(i=>{
-    const d=DATA.days[i];
-    const tile=document.createElement('div');tile.className='day-tile';
-    const b=document.createElement('button');b.className='day-btn';b.onclick=()=>openDay(i);
-    b.innerHTML='<div><div class="db-date">'+esc(d.date||'Untitled day')+'</div>'+(d.who?'<div class="db-who">'+esc(d.who)+'</div>':'')+'</div><div class="db-meta"><span class="db-go">Open →</span></div>';
-    tile.appendChild(b);
-    const photo=communicatorPhoto(d.who);
-    if(photo){
-      const img=document.createElement('img');img.className='day-avatar';img.src=photo;img.alt='';
-      tile.appendChild(img);
-    }
-    if(EDIT){
-      const del=document.createElement('button');del.type='button';del.className='day-tile-del';del.title='Delete this day';del.setAttribute('aria-label','Delete this day');del.textContent='×';
-      del.onclick=e=>{e.stopPropagation();deleteDay(i)};
-      tile.appendChild(del);
-      const reorder=document.createElement('div');reorder.className='day-tile-reorder';
-      const up=document.createElement('button');up.type='button';up.title='Move earlier';up.setAttribute('aria-label','Move earlier');up.textContent='▲';up.disabled=visible.indexOf(i)===0;
-      up.onclick=e=>{e.stopPropagation();moveDay(i,-1)};
-      const down=document.createElement('button');down.type='button';down.title='Move later';down.setAttribute('aria-label','Move later');down.textContent='▼';down.disabled=visible.indexOf(i)===visible.length-1;
-      down.onclick=e=>{e.stopPropagation();moveDay(i,1)};
-      reorder.appendChild(up);reorder.appendChild(down);
-      tile.appendChild(reorder);
-    }
-    board.appendChild(tile);
+    const g=monthGroupOf(DATA.days[i].date);
+    if(!(g.key in groupAt)){groupAt[g.key]=groups.length;groups.push({label:g.label,items:[]})}
+    groups[groupAt[g.key]].items.push(i);
   });
-  if(EDIT){const a=document.createElement('button');a.className='day-btn add';a.onclick=addDay;a.innerHTML='<div class="db-date">+ Add Day</div><div class="db-meta"><span>New teaching day</span></div>';board.appendChild(a)}
-  area.innerHTML='';area.appendChild(board);
+  area.innerHTML='';
+  groups.forEach(g=>{
+    const heading=document.createElement('h3');heading.className='month-heading';heading.textContent=g.label;
+    area.appendChild(heading);
+    const board=document.createElement('div');board.className='day-board';
+    g.items.forEach(i=>{
+      const d=DATA.days[i];
+      const tile=document.createElement('div');tile.className='day-tile';
+      const b=document.createElement('button');b.className='day-btn';b.onclick=()=>openDay(i);
+      b.innerHTML='<div><div class="db-date">'+esc(d.date||'Untitled day')+'</div>'+(d.who?'<div class="db-who">'+esc(d.who)+'</div>':'')+'</div><div class="db-meta"><span class="db-go">Open →</span></div>';
+      tile.appendChild(b);
+      const photo=communicatorPhoto(d.who);
+      if(photo){
+        const img=document.createElement('img');img.className='day-avatar';img.src=photo;img.alt='';
+        tile.appendChild(img);
+      }
+      if(EDIT){
+        const del=document.createElement('button');del.type='button';del.className='day-tile-del';del.title='Delete this day';del.setAttribute('aria-label','Delete this day');del.textContent='×';
+        del.onclick=e=>{e.stopPropagation();deleteDay(i)};
+        tile.appendChild(del);
+        const reorder=document.createElement('div');reorder.className='day-tile-reorder';
+        const up=document.createElement('button');up.type='button';up.title='Move earlier';up.setAttribute('aria-label','Move earlier');up.textContent='▲';up.disabled=visible.indexOf(i)===0;
+        up.onclick=e=>{e.stopPropagation();moveDay(i,-1)};
+        const down=document.createElement('button');down.type='button';down.title='Move later';down.setAttribute('aria-label','Move later');down.textContent='▼';down.disabled=visible.indexOf(i)===visible.length-1;
+        down.onclick=e=>{e.stopPropagation();moveDay(i,1)};
+        reorder.appendChild(up);reorder.appendChild(down);
+        tile.appendChild(reorder);
+      }
+      board.appendChild(tile);
+    });
+    area.appendChild(board);
+  });
+  if(EDIT){
+    const addHeading=document.createElement('h3');addHeading.className='month-heading';addHeading.textContent='Add New';
+    area.appendChild(addHeading);
+    const addBoard=document.createElement('div');addBoard.className='day-board';
+    const a=document.createElement('button');a.className='day-btn add';a.onclick=addDay;a.innerHTML='<div class="db-date">+ Add Day</div><div class="db-meta"><span>New teaching day</span></div>';
+    addBoard.appendChild(a);
+    area.appendChild(addBoard);
+  }
 }
 function parseDayDate(s){
   if(!s)return null;
