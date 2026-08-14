@@ -25,7 +25,13 @@
       "series": "Knowing God",
       "graphic": "files/1786128767127-Knowing-God.jpg",
       "body": "<span data-teams=\"true\"><p>Hey Jonesy! So excited as you are going to communicate in Seminary on <u>Monday, August 24</u>! You will be starting our Knowing God series. This series highlights who God is, including attributes, nature, and how we as Christians can come to <i>know Him</i>.&nbsp;</p><p>&nbsp;</p><p><strong>You will be teaching the first day of this series, so I would love for you to introduce the topic.</strong></p><p>&nbsp;I would love it if you were to have some sort of teaching/reflection on God and then release them to their prayer groups for the last 15/20 minutes or so of class.&nbsp;</p><p><br></p></span>",
-      "files": []
+      "files": [
+        {
+          "name": "August Seating Charts.pdf",
+          "url": "files/1786732304091-August-Seating-Charts.pdf",
+          "kind": "file"
+        }
+      ]
     },
     {
       "date": "Aug. 26, 2026",
@@ -106,5 +112,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-08-14T18:31:24.425Z"
+  "updated": "2026-08-14T18:31:46.440Z"
 }
