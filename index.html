@@ -75,10 +75,6 @@ main{max-width:1600px;margin:0 auto;padding:34px 32px 72px;flex:1 0 auto;width:1
 .day-tile .day-btn{width:100%}
 .day-tile-del{position:absolute;top:8px;right:8px;z-index:2;background:var(--white);color:var(--gray-b);border:1px solid var(--ink-12);border-radius:999px;width:26px;height:26px;line-height:1;display:flex;align-items:center;justify-content:center;font-size:17px}
 .day-tile-del:hover{color:var(--white);background:var(--red);border-color:var(--red)}
-.day-tile-reorder{position:absolute;top:8px;left:8px;z-index:2;display:flex;flex-direction:column;gap:3px}
-.day-tile-reorder button{background:var(--white);color:var(--gray-b);border:1px solid var(--ink-12);border-radius:999px;width:22px;height:22px;line-height:1;display:flex;align-items:center;justify-content:center;font-size:11px;padding:0;cursor:pointer}
-.day-tile-reorder button:hover:not(:disabled){color:var(--white);background:var(--ink)}
-.day-tile-reorder button:disabled{opacity:.3;cursor:default}
 .day-avatar{position:absolute;top:8px;right:8px;width:62px;height:62px;border-radius:50%;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:1}
 .day-tile:has(.day-tile-del) .day-avatar{right:44px}
 .day-detail{border:1px solid var(--ink-12);max-width:900px}
@@ -235,7 +231,7 @@ main{padding:24px 27px 56px}.section-head h2{font-size:21px}
 <div class="home-board">
 <div class="home-block home-block-photo"><img src="files/6L5A4743-web.jpg" alt="Seminary students"/></div>
 <div class="home-block">
-<div class="home-stat">70 Youth</div>
+<div class="home-stat">85 Youth</div>
 <div class="home-stat-sub"><span>2nd, 3rd, and 5th Period</span><span>Grades 9-12</span></div>
 <div class="home-rule"></div>
 <div class="home-lockup"><img src="files/9-trimmed.png" alt="Seminary YTH logo"/></div>
@@ -366,8 +362,8 @@ function renderHeader(){
   if(EDIT){h.innerHTML='<span id="saveState">Saved</span><button class="btn btn-ghost" onclick="publishNow()">Save Now</button><button class="btn btn-ghost" onclick="signOut()">Lock</button>';}
   else{h.innerHTML='<span class="view-badge">View Only</span>';}
 }
-const COMM_PHOTOS=['caleb.png','emily.png','jeff r.png','jonesy.png','jonny.png','jordan.png','josh.png','ronnie.png','sarah.png','sarai.png','shane.png','trevor.png','tyler.png'];
-const COMM_ALIASES={hunter:'jonesy.png'};
+const COMM_PHOTOS=['caleb.png','emily.png','hepp.png','jeff r.png','jonesy.png','jonny.png','jordan.png','josh.png','ronnie.png','sarah.png','sarai.png','shane.png','trevor.png','tyler.png'];
+const COMM_ALIASES={hunter:'jonesy.png',joshua:'hepp.png'};
 function communicatorPhoto(who){
   if(!who)return null;
   const first=who.trim().split(/\s+/)[0].toLowerCase();
@@ -377,13 +373,23 @@ function communicatorPhoto(who){
   return match?'files/communicators 3/thumbs/'+match:null;
 }
 const MONTH_NAMES=['January','February','March','April','May','June','July','August','September','October','November','December'];
-function monthGroupOf(dateStr){
+function dayMonthIdx(dateStr){
   const m=(dateStr||'').match(/([A-Za-z]{3,})/);
+  if(!m)return-1;
+  return MONTH_NAMES.findIndex(n=>n.slice(0,3).toLowerCase()===m[1].slice(0,3).toLowerCase());
+}
+function monthGroupOf(dateStr){
+  const idx=dayMonthIdx(dateStr);
   const y=(dateStr||'').match(/(\d{4})/);
-  if(!m||!y)return{key:'other',label:'Other Dates'};
-  const idx=MONTH_NAMES.findIndex(n=>n.slice(0,3).toLowerCase()===m[1].slice(0,3).toLowerCase());
-  if(idx<0)return{key:'other',label:'Other Dates'};
+  if(idx<0||!y)return{key:'other',label:'Other Dates'};
   return{key:y[1]+'-'+idx,label:MONTH_NAMES[idx]+' '+y[1]};
+}
+function dayDateValue(dateStr){
+  const idx=dayMonthIdx(dateStr);
+  const y=(dateStr||'').match(/(\d{4})/);
+  const day=(dateStr||'').match(/\b(\d{1,2})\b,/);
+  if(idx<0||!y)return Infinity;
+  return y[1]*10000+idx*100+(day?+day[1]:0);
 }
 function renderContent(){
   const area=$('#contentArea');
@@ -391,6 +397,7 @@ function renderContent(){
   $('#contentTitle').textContent='Your Teaching Day';
   $('#contentSub').textContent="Find your date below to see what you're teaching and grab any files you'll need.";
   const visible=[];DATA.days.forEach((d,i)=>{if(EDIT||!isDayExpired(d.date))visible.push(i)});
+  visible.sort((a,b)=>dayDateValue(DATA.days[a].date)-dayDateValue(DATA.days[b].date));
   if(!visible.length&&!EDIT){area.innerHTML='<p class="loading">No teaching days posted yet.</p>';return}
   const groups=[];const groupAt={};
   visible.forEach(i=>{
@@ -418,13 +425,6 @@ function renderContent(){
         const del=document.createElement('button');del.type='button';del.className='day-tile-del';del.title='Delete this day';del.setAttribute('aria-label','Delete this day');del.textContent='×';
         del.onclick=e=>{e.stopPropagation();deleteDay(i)};
         tile.appendChild(del);
-        const reorder=document.createElement('div');reorder.className='day-tile-reorder';
-        const up=document.createElement('button');up.type='button';up.title='Move earlier';up.setAttribute('aria-label','Move earlier');up.textContent='▲';up.disabled=visible.indexOf(i)===0;
-        up.onclick=e=>{e.stopPropagation();moveDay(i,-1)};
-        const down=document.createElement('button');down.type='button';down.title='Move later';down.setAttribute('aria-label','Move later');down.textContent='▼';down.disabled=visible.indexOf(i)===visible.length-1;
-        down.onclick=e=>{e.stopPropagation();moveDay(i,1)};
-        reorder.appendChild(up);reorder.appendChild(down);
-        tile.appendChild(reorder);
       }
       board.appendChild(tile);
     });
@@ -500,7 +500,6 @@ function openDay(i){openIdx=i;renderContent();window.scrollTo(0,0)}
 function closeDay(){openIdx=null;renderContent()}
 function addDay(){DATA.days.push({date:'',who:'',series:'',graphic:'',body:'',files:[]});openIdx=DATA.days.length-1;renderContent();queue();const el=document.querySelector('.day-date');if(el)el.focus()}
 function deleteDay(i){if(!confirm('Remove "'+(DATA.days[i].date||'this day')+'"?'))return;DATA.days.splice(i,1);openIdx=null;renderContent();queue()}
-function moveDay(i,dir){const j=i+dir;if(j<0||j>=DATA.days.length)return;const t=DATA.days[i];DATA.days[i]=DATA.days[j];DATA.days[j]=t;renderContent();queue()}
 function addCard(){DATA.guide.push({title:'New Section',html:'',full:false,collapsible:false});renderGuide();queue()}
 function deleteCard(i){if(!confirm('Delete "'+(DATA.guide[i].title||'this section')+'"?'))return;DATA.guide.splice(i,1);renderGuide();queue()}
 function toggleFull(i){DATA.guide[i].full=!DATA.guide[i].full;renderGuide();queue()}
