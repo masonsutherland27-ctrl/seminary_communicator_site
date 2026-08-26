@@ -80,7 +80,7 @@
   "guide": [
     {
       "title": "Class Times",
-      "html": "<h4>Mon / Tue / Fri</h4><ul><li><strong>2nd Hour:</strong> 8:25–9:17am (door open 8:20, start class 8:30)</li><li><strong>3rd Hour:</strong> 9:25–10:17am (door open 9:20, start class 9:30)</li><li><strong>5th Hour:</strong> 12:19–1:11pm (door open 12:15, start class 12:25)</li></ul><h4>Wednesday</h4><ul><li>Conference time: 9:18–9:58am — youth hang out at the coffee shop until 10:15</li><li><strong>3rd Hour:</strong> 10:15–11:45am (start class 10:20)</li><li>Lunch/Hangout: 11:45am–12:20pm — 3rd &amp; 5th hour hang out together until 3rd hour leaves by 12:15pm</li><li><strong>5th Hour:</strong> 12:20–2:15pm (door open 11:45am)</li></ul><h4>Thursday</h4><ul><li><strong>2nd Hour:</strong> 7:25–9:18am (door open 7:20)</li><li>Conference time: 9:18–9:58am — dismiss youth who are in a club; others hang out at the coffee shop until 9:45am</li></ul>",
+      "html": "<h4>Mon / Tue / Fri</h4><ul><li><strong>2nd Hour:</strong> 8:25–9:17am (door open 8:20, start class 8:30)</li><li><strong>3rd Hour:</strong> 9:25–10:17am (door open 9:20, start class 9:30)</li><li><strong>5th Hour:</strong> 12:19–1:11pm (door open 12:15, start class 12:25)</li></ul><h4>Wednesday</h4><ul><li>Conference time: 9:18–9:58am — youth hang out at the coffee shop until 10:15</li><li><strong>3rd Hour:</strong> 10:15–11:45am (start class 10:20)</li><li>Lunch/Hangout: 11:45am–12:20pm — 3rd &amp; 5th hour hang out together until 3rd hour leaves by 12:15pm</li><li><strong>5th Hour:</strong> 12:20–2:15pm (door open 11:45am) Around 15 students from Jewell School leave around 1:15pm. For the last hour, do an activity with the rest of the students.&nbsp;</li></ul><h4>Thursday</h4><ul><li><strong>2nd Hour:</strong> 7:25–9:18am (door open 7:20)</li><li>Conference time: 9:18–9:58am — dismiss youth who are in a club; others hang out at the coffee shop until 9:45am</li></ul>",
       "full": true,
       "collapsible": true
     },
@@ -107,5 +107,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-08-26T19:25:16.460Z"
+  "updated": "2026-08-26T19:25:54.158Z"
 }
