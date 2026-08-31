@@ -141,14 +141,6 @@
           "kind": "file"
         }
       ]
-    },
-    {
-      "date": "",
-      "who": "",
-      "series": "",
-      "graphic": "",
-      "body": "",
-      "files": []
     }
   ],
   "guide": [
@@ -181,5 +173,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-08-31T19:06:16.767Z"
+  "updated": "2026-08-31T19:06:24.989Z"
 }
