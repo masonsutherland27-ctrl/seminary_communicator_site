@@ -517,22 +517,24 @@ function dayTemplateHTML(dow,who,series,weekdayLabel,monthDay){
   html+='<p>Attached is the seating chart for the month, if you could take attendance based off of that list. Thank you!!</p>';
   return html;
 }
+const autoFilledDays=new WeakSet();
 function autoFillDayBody(i){
   const d=DATA.days[i];
   const plain=(d.body||'').replace(/<[^>]*>/g,'').replace(/&nbsp;/g,'').trim();
-  if(plain)return;
+  if(plain&&!autoFilledDays.has(d))return;
   const parsed=new Date(d.date);
   if(isNaN(parsed))return;
   const dow=parsed.getDay();
   if(dow===0||dow===6)return;
   const monthDay=parsed.toLocaleDateString('en-US',{month:'long',day:'numeric'});
   d.body=dayTemplateHTML(dow,d.who,d.series,WEEKDAY_LABELS[dow],monthDay);
+  autoFilledDays.add(d);
   const rich=document.querySelector('.day-detail .day-body>.rich');
   if(rich)rich.innerHTML=d.body;
 }
 
 /* ---------- editing binds ---------- */
-function bind(i,k,el,html){DATA.days[i][k]=html?el.innerHTML:el.textContent.trim();if(k==='date')autoFillDayBody(i);queue()}
+function bind(i,k,el,html){DATA.days[i][k]=html?el.innerHTML:el.textContent.trim();if(k==='date'||k==='who'||k==='series')autoFillDayBody(i);else if(k==='body')autoFilledDays.delete(DATA.days[i]);queue()}
 function bindGuide(i,k,el,html){DATA.guide[i][k]=html?el.innerHTML:el.textContent.trim();queue()}
 function bindVideo(k,el){DATA.video[k]=el.innerHTML;queue()}
 function openDay(i){openIdx=i;renderContent();window.scrollTo(0,0)}
