@@ -106,7 +106,13 @@
       "series": "Known",
       "graphic": "files/1788198833154-Known-Identity-Series-Graphic.png",
       "body": "",
-      "files": []
+      "files": [
+        {
+          "name": "7.png",
+          "url": "files/1788198970557-7.png",
+          "kind": "file"
+        }
+      ]
     }
   ],
   "guide": [
@@ -139,5 +145,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-08-31T17:55:43.074Z"
+  "updated": "2026-08-31T17:56:12.614Z"
 }
