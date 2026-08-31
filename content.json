@@ -120,7 +120,13 @@
       "series": "Authority",
       "graphic": "files/1788203046886-1.png",
       "body": "",
-      "files": []
+      "files": [
+        {
+          "name": "3.png",
+          "url": "files/1788203101029-3.png",
+          "kind": "file"
+        }
+      ]
     }
   ],
   "guide": [
@@ -153,5 +159,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-08-31T19:04:40.497Z"
+  "updated": "2026-08-31T19:05:04.156Z"
 }
