@@ -492,8 +492,47 @@ function renderVideo(){
   a.innerHTML=out+'</div>';
 }
 
+/* ---------- day-of-week body templates ---------- */
+const WEEKDAY_LABELS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function dayTemplateHTML(dow,who,series,weekdayLabel,monthDay){
+  const whoDisp=(who&&who.trim())?esc(who.trim()):'Communicator';
+  const seriesDisp=(series&&series.trim())?esc(series.trim()):'_';
+  const verb=(dow===3||dow===4)?'teaching during our':'in our';
+  let html='<p>Hey '+whoDisp+'! So excited as you are going to communicate in Seminary on <u>'+weekdayLabel+', '+monthDay+'</u>! You will be '+verb+' '+seriesDisp+' series. This series highlights _.</p>';
+  html+='<p>For setting up the room, there is a Guide tab to help you and a Room Setup Video. Let me know if you have any further questions. If you would like me to be there in the room with you to help setup, record your teaching, or give any feedback- let me know and I can be there!</p>';
+  html+='<p><strong>Your day, you will be leading through the day on _.</strong></p>';
+  if(dow===1){
+    html+='<p>I would love it if you were to have some sort of teaching on _ and then release them to their prayer groups for the last 15/20 minutes or so of class. If you see the conversation is going well and you want more time focusing on it, you have all authority to do that and they can do prayer groups another day, just let me know!</p>';
+  }else if(dow===2||dow===5){
+    html+='<p>On '+weekdayLabel+'s, you can teach around 30-45 minutes if you would like. I would love for you to be relational before and after and see what is going on in their lives along with an introduction for them to get to know you.'+(dow===5?' If you would like to do a game or activity, go for it!':'')+'</p>';
+  }else if(dow===3||dow===4){
+    if(dow===4){
+      html+='<p>On Thursdays, I normally get them three dozen donuts from Bosa (if you are willing to the pick them up and charge Seminary in Bill, that would be incredible, if not no worries, they will be okay without donuts for once lol). I try to get to Rock Point by 7am and you will need to unlock the big swinging gate outside the Seminary room between Rock Point and Casteel.</p>';
+    }
+    html+='<p>As the day you chose was a block day, classes will be around 2 hours long. You do not need to teach that long (I would actually encourage against it and to stick with teaching for around 30-60 minutes). I would love for you to be highly relational throughout all of the class! Allow the class to get to know you and for you to get to know them. I would then teach (they love visuals and hands on activities). After your lesson, I would love it if you led through some sort of game or activity. It could be related with the content or just for relationship building!</p>';
+    if(dow===3){
+      html+='<p>On Wednesday\'s around 11:35am there will be a Barros pizza delivery guy to deliver pizzas (he normally parks on the street outside near the Jurassic park gates) for youth in 3rd and 5th period. Plates and napkins are in the Seminary closet in a bin labeled "Food Supplies."</p>';
+    }
+  }
+  html+='<p>Attached is the seating chart for the month, if you could take attendance based off of that list. Thank you!!</p>';
+  return html;
+}
+function autoFillDayBody(i){
+  const d=DATA.days[i];
+  const plain=(d.body||'').replace(/<[^>]*>/g,'').replace(/&nbsp;/g,'').trim();
+  if(plain)return;
+  const parsed=new Date(d.date);
+  if(isNaN(parsed))return;
+  const dow=parsed.getDay();
+  if(dow===0||dow===6)return;
+  const monthDay=parsed.toLocaleDateString('en-US',{month:'long',day:'numeric'});
+  d.body=dayTemplateHTML(dow,d.who,d.series,WEEKDAY_LABELS[dow],monthDay);
+  const rich=document.querySelector('.day-detail .day-body>.rich');
+  if(rich)rich.innerHTML=d.body;
+}
+
 /* ---------- editing binds ---------- */
-function bind(i,k,el,html){DATA.days[i][k]=html?el.innerHTML:el.textContent.trim();queue()}
+function bind(i,k,el,html){DATA.days[i][k]=html?el.innerHTML:el.textContent.trim();if(k==='date')autoFillDayBody(i);queue()}
 function bindGuide(i,k,el,html){DATA.guide[i][k]=html?el.innerHTML:el.textContent.trim();queue()}
 function bindVideo(k,el){DATA.video[k]=el.innerHTML;queue()}
 function openDay(i){openIdx=i;renderContent();window.scrollTo(0,0)}
