@@ -68,6 +68,11 @@
           "name": "3.png",
           "url": "files/1788203101029-3.png",
           "kind": "file"
+        },
+        {
+          "name": "October Seating Chart.pdf",
+          "url": "files/1790111085345-October-Seating-Chart.pdf",
+          "kind": "file"
         }
       ]
     },
@@ -130,5 +135,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-09-22T21:04:35.804Z"
+  "updated": "2026-09-22T21:04:47.013Z"
 }
