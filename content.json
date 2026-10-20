@@ -106,6 +106,14 @@
           "kind": "file"
         }
       ]
+    },
+    {
+      "date": "Nov.",
+      "who": "",
+      "series": "",
+      "graphic": "",
+      "body": "",
+      "files": []
     }
   ],
   "guide": [
@@ -138,5 +146,5 @@
     "url": "https://youtu.be/zrzpsyagEN0",
     "note": ""
   },
-  "updated": "2026-10-20T21:19:43.137Z"
+  "updated": "2026-10-20T21:20:06.781Z"
 }
